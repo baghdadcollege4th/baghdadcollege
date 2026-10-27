@@ -399,7 +399,7 @@ function validName(n){
   n=n.replace(/\s+/g," ").trim();
   if(n.length<2)return{e:"الاسم قصير جدًا. اكتب حرفين على الأقل."};
   if(n.indexOf("رئيس المرحلة الرابعة")>-1||n.replace(/\s/g,"")===ADMIN_NAME.replace(/\s/g,""))return{e:"هذا الاسم محجوز. اكتب اسمك الحقيقي."};
-  for(var k in D.members){if(k!==uid&&D.members[k].name&&D.members[k].name.toLowerCase()===n.toLowerCase())return{e:"هذا الاسم مستخدم. أضف حرفًا من اسم العائلة للتمييز."}}
+  // السماح بالاسم حتى لو كان مسجلاً مسبقاً (لتجنب مشاكل تغير الـ UID المجهول)
   return{n:n}}
 function ensureName(){if(isAdmin||preview)return true;if(myName())return true;openSheet(true);return false}
 
